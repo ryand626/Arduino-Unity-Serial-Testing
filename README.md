@@ -6,7 +6,7 @@ This should be noted that this only works for Windows machines
 To visualize the speed of data transfer from arduino to Unity 3D via the serial port
 
 ## Arduino Side
-- The Arduino generates random 3 random numbers in the range -RANDOM_SPREAD to RANDOM_SPREAD.
+- The Arduino generates 3 random numbers in the range -RANDOM_SPREAD to RANDOM_SPREAD.
 - The random numbers are then written to the serial port, separated by commas.
 
 ## Unity Side
