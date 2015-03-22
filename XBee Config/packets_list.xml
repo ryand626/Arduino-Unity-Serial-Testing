@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+  <loop>false</loop>
+  <repeat_times>1</repeat_times>
+  <repeat_period>500</repeat_period>
+  <packets_list>
+    <packet name="packet_0">
+      <payload>302C3235352C3235350D3235352C302C3235350D3235352C3235352C30</payload>
+    </packet>
+  </packets_list>
+</data>

@@ -3,7 +3,12 @@
 // Written by Ryan Dougherty
 // Last updated 3/4/15
 
+#include <SoftwareSerial.h>
+
 #define RANDOM_SPREAD 255 // The +/- spread of the coordinates
+
+SoftwareSerial XBee(0, 1); // RX, TX
+
 // packet number could help identify lost packets in a later version
 int packetsIn = 0;
 int packetsOut = 0;
@@ -17,6 +22,7 @@ int z;
 void setup() {
   message = "";              // make the message blank
   Serial.begin(9600);        // initialize the serial port
+  XBee.begin(9600);          // initialize XBee
   randomSeed(analogRead(0)); // seed the random number generator
 }
 void loop() {
@@ -33,6 +39,8 @@ void loop() {
   Serial.print(y);
   Serial.print(",");
   Serial.println(z);
+  
+  XBee.write(Serial.read());
 
   // packetsOut++; // unused for now but might be used later
   // delay(1000); // NO BRAKES!

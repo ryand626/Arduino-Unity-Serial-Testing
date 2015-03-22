@@ -21,3 +21,7 @@ I added a spinning camera, a container for the cube, and the ability to change t
 
 ## Driver Notes
 [Download drivers for XBee here: ](http://www.digi.com/support/productdetail?pid=3257)
+**To Program**
+Make sure the jumpers are set to 'USB'
+**To use XBee Communication**
+Make sure the jumpers are set to 'XBee'

@@ -8,7 +8,8 @@ using System.Threading;
 public class serialTest : MonoBehaviour {
 
 	//Setup parameters to connect to Arduino
-	public static SerialPort sp = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+	public static SerialPort sp = new SerialPort("COM6", 9600, Parity.None, 8, StopBits.One);
+
 	public static string strIn;
 	
 	int packetsSent = 0;
