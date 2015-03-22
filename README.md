@@ -18,3 +18,6 @@ To visualize the speed of data transfer from arduino to Unity 3D via the serial 
 **For fun**
 
 I added a spinning camera, a container for the cube, and the ability to change the way the camera rotates by pressing spacebar.
+
+## Driver Notes
+[Download drivers for XBee here: ](http://www.digi.com/support/productdetail?pid=3257)
