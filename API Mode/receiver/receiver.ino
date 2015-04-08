@@ -21,17 +21,12 @@ Rx16Response rx16 = Rx16Response();
 void setup() {
   xbee.begin(Serial);
   Serial.begin(9600);
-  Serial.println("Arduino. Will receive packets.");
 }
 
 void loop() {
   // read incoming packet
   xbee.readPacket();
   if (xbee.getResponse().isAvailable()) {
-    // is it a response to the previously sent packet?
-//    if (xbee.getResponse().getApiId() == TX_STATUS_RESPONSE) {
-//    }
-    
     if (xbee.getResponse().getApiId() == RX_16_RESPONSE) {
       xbee.getResponse().getRx16Response(rx16);
       payload = rx16.getData();
