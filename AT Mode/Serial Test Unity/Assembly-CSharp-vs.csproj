@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\lookat.cs" />
      <Compile Include="Assets\Scripts\rotateAround.cs" />
      <Compile Include="Assets\Scripts\serialTest.cs" />
+     <Compile Include="Assets\networkTest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
