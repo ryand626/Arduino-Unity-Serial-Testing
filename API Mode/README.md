@@ -1,6 +1,5 @@
 # API MODE
-
-The XBee API mode library for Arduino 
+A basic example of sending data from multiple senders to one receiver, and printing that data out to Serial.
 
 ## Software
 - [Arduino IDE] (http://arduino.cc/en/Main/Software)
