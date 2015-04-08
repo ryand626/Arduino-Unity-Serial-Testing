@@ -12,19 +12,44 @@
 #include <XBee.h>
 
 XBee xbee = XBee();
-// Unique Message of Sender
-uint8_t payload[] = { 'y', 'o',' ','t','h','i','s',' ','c','r','e','y' };
+uint8_t* payload;
+String data;
 
 void setup(){
-    Serial.begin(9600);
-    xbee.begin(Serial);
+  data = "";
+  Serial.begin(9600);
+  xbee.begin(Serial);
 }
 
 void loop(){
+  // Manipulate data (TODO: read arduino pins instead of hard coding)
+  // DEVICE NUMBER
+  data += "1,";
+  // Button 1
+  data += "0,";
+  // Button 2
+  data += "0,";
+  // LED 1
+  data += "0,";
+  // LED 2
+  data += "0,";
+  // Potentiometer
+  data += "000";
+  
+  // Make a new payload from the data
+  delete [] payload;
+  payload = new uint8_t[data.length()];
+  for(int i = 0; i < data.length();i++){
+    payload[i] = (uint8_t)data[i];
+  }
   // Address of intended reciever using 16 bit MY as the lower bits
   XBeeAddress64 addr64 = XBeeAddress64(0x00000000, 0x00000000);
-  Tx64Request tx64 = Tx64Request(addr64, payload, sizeof(payload));
-
+  // Create the packet with the payload
+  Tx64Request tx64 = Tx64Request(addr64, payload, data.length());
+  // Send the packet
   xbee.send(tx64);
-  //delay(50);
+  // Clear the Data
+  data = "";
+  
+  delay(50);
 }
