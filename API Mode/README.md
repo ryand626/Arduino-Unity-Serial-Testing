@@ -24,5 +24,5 @@ Sends packets to the address of the receiver
 Listens for packets, and then prints them to serial
 
 ## References:
-[Useful PDF from Université de Pau](http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/PAU-UPPA/RESA-M2/intro-arduino-xbee.pdf)
-[David Beath Blog](https://davidbeath.com/posts/reading-xbee-rssi-with-arduino.html)
+- [Useful PDF from Université de Pau](http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/PAU-UPPA/RESA-M2/intro-arduino-xbee.pdf)
+- [David Beath Blog](https://davidbeath.com/posts/reading-xbee-rssi-with-arduino.html)
