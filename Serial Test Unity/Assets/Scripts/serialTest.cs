@@ -5,19 +5,19 @@ using System.IO.Ports;
 using System.Threading;
 
 
-public class networkTest : MonoBehaviour {
-	
+public class serialTest : MonoBehaviour {
+
 	//Setup parameters to connect to Arduino
-	public static SerialPort sp = new SerialPort("COM9", 9600, Parity.None, 8, StopBits.One);
-	
+	public static SerialPort sp = new SerialPort("COM6", 9600, Parity.None, 8, StopBits.One);
+
 	public static string strIn;
 	
 	int packetsSent = 0;
-	
+
 	// Visulalization parameters
 	Vector3 initialPosition;
-	
-	
+
+
 	// Use this for initialization
 	void Start () {
 		initialPosition = transform.position;
@@ -25,17 +25,18 @@ public class networkTest : MonoBehaviour {
 	}
 	
 	void Update(){
+		// Read incoming data
 		try{
 			// READ
 			strIn = sp.ReadLine();
 			print(strIn);
-			//transform.position = parseInput(strIn)*(1f/255f) + initialPosition;
+			transform.position = parseInput(strIn)*(1f/255f) + initialPosition;
 			// WRITE
-			//			sp.WriteLine("UNITY: " + packetsSent);
-			//			packetsSent++;
+//			sp.WriteLine("UNITY: " + packetsSent);
+//			packetsSent++;
 		}
 		catch(Exception e) {
-			
+
 		}
 	}
 	
@@ -59,12 +60,12 @@ public class networkTest : MonoBehaviour {
 			}
 		}
 	}
-	
+
 	// Close the Serial Port when the program closes
 	void OnApplicationQuit() {
 		sp.Close();
 	}
-	
+
 	Vector3 parseInput(string input){
 		int numComplete = 0;
 		string x = "";
