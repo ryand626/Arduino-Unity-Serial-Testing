@@ -11,30 +11,39 @@
 */
 #include <XBee.h>
 
+#define BUTTON1 8
+#define BUTTON2 11
+#define LED1 9 // Red
+#define LED2 10
+#define POT A0
+
 XBee xbee = XBee();
 uint8_t* payload;
 String data;
 
 void setup(){
+  pinMode(BUTTON1, INPUT);
+  pinMode(BUTTON2, INPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED1, OUTPUT);
   data = "";
   Serial.begin(9600);
   xbee.begin(Serial);
 }
 
 void loop(){
-  // Manipulate data (TODO: read arduino pins instead of hard coding)
   // DEVICE NUMBER
   data += "1,";
   // Button 1
-  data += "0,";
+  data += digitalRead(BUTTON1);
   // Button 2
-  data += "0,";
+  data += digitalRead(BUTTON2);
   // LED 1
-  data += "0,";
+  data += digitalRead(LED1);
   // LED 2
-  data += "0,";
+  data += digitalRead(LED2);
   // Potentiometer
-  data += "000";
+  data += int(analogRead(POT));
   
   // Make a new payload from the data
   delete [] payload;
