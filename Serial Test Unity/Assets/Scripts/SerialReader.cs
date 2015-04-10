@@ -58,12 +58,14 @@ public class SerialReader : MonoBehaviour {
 		inputString = "";
 		try{
 			inputString = sp.ReadLine();
+			//print (inputString);
 		}
 		catch(Exception e) {}
 	}
 	
 	void UpdateSmartObjects(string message){
-		if (message.Length != 14) {
+		print (message.Length);
+		if (message.Length <= 11 || message.Length > 15) {
 			return; // return if the message is not the correct length
 		}
 		
@@ -73,7 +75,10 @@ public class SerialReader : MonoBehaviour {
 		int button2 = (int)message[4]-48;
 		int led1 = (int)message[6]-48;
 		int led2 = (int)message[8]-48;
-		string pot_str = "" + message[10] + message[11] + message[12];
+		string pot_str = "";
+		for (int i=10; i<message.Length; i++) {
+			pot_str += message[i];
+		}
 		float pot = float.Parse(pot_str);
 		
 		// Either make, or get a reference to the object
@@ -84,6 +89,7 @@ public class SerialReader : MonoBehaviour {
 		} else {
 			print ("Making a new object " + id);
 			GameObject newObject = (GameObject)Instantiate(Resources.Load("PreFabs/SmartObject"));
+			newObject.transform.Translate(Vector3.right*(id-2.5f));
 			newObject.name = id.ToString();
 			ObjectInfo = newObject.GetComponent<SmartObject>();
 			SmartObjects.Add(newObject);
@@ -99,7 +105,7 @@ public class SerialReader : MonoBehaviour {
 	}
 	
 	// Check if the object exists
-	bool Exists(int id){
+	public bool Exists(int id){
 		if (SmartObjects.Find(GameObject => GameObject.GetComponent<SmartObject>().id == id)){
 			return true;
 		}

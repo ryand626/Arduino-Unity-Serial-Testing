@@ -31,32 +31,32 @@ public class ObjectBehavior : MonoBehaviour {
 
 	void UpdateButtons(){
 		if (ObjectInfo.button1) {
-			Button1.transform.Rotate (Vector3.up);
+			Button1.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
 		} else {
-			Button1.transform.Rotate (Vector3.up*-1f);
+			Button1.gameObject.GetComponent<Renderer>().material.color = Color.white;
 		}
 
 		if (ObjectInfo.button2) {
-			Button2.transform.Rotate (Vector3.up);
+			Button2.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
 		} else {
-			Button2.transform.Rotate (Vector3.up*-1f);
+			Button2.gameObject.GetComponent<Renderer>().material.color = Color.white;
 		}
 	}
 
 	void UpdateLEDs(){
 		if (ObjectInfo.LED1) {
-			LED1.transform.Rotate (Vector3.up);
+			LED1.gameObject.GetComponent<Renderer>().material.color = Color.red;
 		} else {
-			LED1.transform.Rotate (Vector3.up*-1f);
+			LED1.gameObject.GetComponent<Renderer>().material.color = Color.white;
 		}
 		if (ObjectInfo.LED2) {
-			LED2.transform.Rotate (Vector3.up);
+			LED2.gameObject.GetComponent<Renderer>().material.color = Color.blue;
 		} else {
-			LED2.transform.Rotate (Vector3.up*-1f);
+			LED2.gameObject.GetComponent<Renderer>().material.color = Color.white;
 		}
 	}
 
 	void UpdatePot(){
-		pot.transform.rotation = Quaternion.Euler(new Vector3(0,0,ObjectInfo.pot));
+		pot.transform.eulerAngles = new Vector3(0,(ObjectInfo.pot/1024f)*360,0);
 	}
 }
